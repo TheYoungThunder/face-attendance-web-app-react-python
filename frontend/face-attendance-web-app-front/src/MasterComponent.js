@@ -38,6 +38,7 @@ function MasterComponent() {
             })
             .catch((error) => {
               console.error("Error sending image to API:", error);
+              alert("A problem occured on registration");
             });
         });
     }
@@ -84,11 +85,14 @@ function MasterComponent() {
             if (response.data.match_status == true) {
               alert("Welcome back " + response.data.user + " !");
             } else {
-              alert("Unknown user! Please try again or register new user!");
+              alert(
+                `Unknown user! Please try again or register new user!, ${response.data.message}, ${response.data.user}`
+              );
             }
           })
           .catch((error) => {
             console.error("Error sending image to API:", error);
+            alert("A problem occured on login");
           });
       });
     }
@@ -122,11 +126,14 @@ function MasterComponent() {
             if (response.data.match_status == true) {
               alert("Goodbye " + response.data.user + " !");
             } else {
-              alert("Unknown user! Please try again or register new user!");
+              alert(
+                `Unknown user! Please try again or register new user!, ${response.data.message}, ${response.data.user}`
+              );
             }
           })
           .catch((error) => {
             console.error("Error sending image to API:", error);
+            alert("A problem occured on logout");
           });
       });
     }
@@ -384,7 +391,6 @@ function Buttons({
               setShowImg
             );
             resetTextBox();
-
           }}
         ></button>
       </div>
